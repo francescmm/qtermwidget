@@ -303,6 +303,8 @@ public slots:
     void saveHistory(QIODevice *device);
 protected:
     void resizeEvent(QResizeEvent *) override;
+    void sessionFinished();
+    void selectionChanged(bool textSelected);
 
 private:
     void search(bool forwards, bool next);
@@ -313,8 +315,7 @@ private:
     void findPrevious();
     void matchFound(int startColumn, int startLine, int endColumn, int endLine);
     void noMatchFound();
-    void sessionFinished();
-    void selectionChanged(bool textSelected);
+
     /**
      * Emulation::cursorChanged() signal propogates to here and QTermWidget
      * sends the specified cursor states to the terminal display
