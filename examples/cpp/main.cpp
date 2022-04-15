@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 #else
     font.setFamily(QStringLiteral("Monospace"));
 #endif
-    font.setPointSize(12);
+    //font.setPointSize(12);
 
     console->setTerminalFont(font);
 
@@ -69,6 +69,10 @@ int main(int argc, char *argv[])
             console->setKeyBindings(arg);
     }
 
+    console->setColorScheme(QString::fromUtf8("Linux"));
+    console->sendText(QString::fromUtf8("export TERM=xterm-color\nsource  ~/.bashrc\nclear\n"));
+
+
     mainWindow->setCentralWidget(console);
     mainWindow->resize(600, 400);
 
@@ -78,6 +82,7 @@ int main(int argc, char *argv[])
     qDebug() << " keyBindings:" << console->keyBindings();
     qDebug() << " availableColorSchemes:" << console->availableColorSchemes();
     qDebug() << "* INFO END *********************";
+
 
     // real startup
     QObject::connect(console, &QTermWidget::finished, mainWindow, &QMainWindow::close);

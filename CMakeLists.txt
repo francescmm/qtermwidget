@@ -17,7 +17,7 @@ option(BUILD_EXAMPLE "Build example application. Default OFF." OFF)
 option(QTERMWIDGET_USE_UTEMPTER "Uses libutempter on Linux or libulog on FreeBSD for login records." OFF)
 option(QTERMWIDGET_BUILD_PYTHON_BINDING "Build python binding" OFF)
 option(USE_UTF8PROC "Use libutf8proc for better Unicode support. Default OFF" OFF)
-
+set(BUILD_EXAMPLE "True")
 
 # just change version for releases
 # keep this in sync with the version in pyqt/pyproject.toml
