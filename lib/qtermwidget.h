@@ -24,6 +24,8 @@
 #include <QWidget>
 #include "Emulation.h"
 #include "Filter.h"
+#include "qtermwidget_export.h"
+#include "qtermwidget_version.h"
 #include "qtermwidget_interface.h"
 
 class QVBoxLayout;
@@ -34,6 +36,7 @@ class QUrl;
 class QTERMWIDGET_EXPORT QTermWidget : public QWidget, public QTermWidgetInterface {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "lxqt.qtermwidget" FILE "qtermwidget.json")
+    Q_INTERFACES(QTermWidgetInterface)
 
 public:
 
@@ -240,6 +243,8 @@ public:
 
     void setConfirmMultilinePaste(bool confirmMultilinePaste) override;
     void setTrimPastedTrailingNewlines(bool trimPastedTrailingNewlines) override;
+
+    QTermWidgetInterface *createWidget(int startnow) const override;
 signals:
     void finished();
     void copyAvailable(bool);
